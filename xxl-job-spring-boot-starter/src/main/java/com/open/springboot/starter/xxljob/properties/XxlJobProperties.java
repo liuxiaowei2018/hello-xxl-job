@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Description
  */
 @Data
-@ConfigurationProperties(prefix = "xxl-job")
+@ConfigurationProperties(prefix = "xxl")
 public class XxlJobProperties {
 
     /**

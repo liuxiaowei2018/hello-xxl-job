@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class ExecutorRegistryRequest extends BaseXxlJobApiRequest<String> {
 
-    private static final long serialVersionUID = 42L;
+    private static final long serialVersionUID = 1L;
 
     private String registryGroup = "EXECUTOR";
 

@@ -1,6 +1,7 @@
 package com.open.springboot.starter.xxljob.response;
 
 import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +10,7 @@ import java.io.Serializable;
  * @Description
  */
 @Data
-public abstract class BaseXxlJobResponse<T>implements Serializable {
+public class BaseXxlJobResponse<T> implements Serializable {
 
     public static final long serialVersionUID = 1L;
 

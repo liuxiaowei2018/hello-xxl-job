@@ -1,11 +1,11 @@
 package com.open.springboot.starter.xxljob;
 
-import cn.hutool.json.JSONUtil;
 import com.open.springboot.starter.xxljob.config.XxlJobAutoConfiguration;
 import com.open.springboot.starter.xxljob.properties.XxlJobProperties;
 import com.open.springboot.starter.xxljob.request.*;
 import com.open.springboot.starter.xxljob.response.ExecutorGetResponse;
 import com.open.springboot.starter.xxljob.response.JobGetResponse;
+import com.open.springboot.starter.xxljob.util.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class XxlJobClientTest {
                 .setScheduleConf("0 0/1 * * * ?")
 //                .setJobCron("0 0/1 * * * ?")
                 .setExecutorHandler("test")
-                .setAuthor("马顶文");
+                .setAuthor("liuxiaowei");
         String result = xxlJobClient.execute(request);
         log.info(result);
     }
@@ -58,7 +58,7 @@ public class XxlJobClientTest {
                 .setJobDesc("支付-微信对账")
                 .setExecutorHandler("checkAccountTask")
                 .setExecutorParam("paycenter-wx")
-                .setAuthor("马顶文");
+                .setAuthor("liuxiaowei");
         String result = xxlJobClient.execute(request);
         log.info(result);
     }
@@ -86,7 +86,7 @@ public class XxlJobClientTest {
         getRequest.setStart(0);
         getRequest.setLength(1);
         ExecutorGetResponse getResponse = xxlJobClient.execute(getRequest);
-        log.info(JSONUtil.toJsonStr(getResponse));
+        log.info(JsonUtils.obj2json(getResponse));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class XxlJobClientTest {
         jobGetRequest.setJobGroup("1");
         jobGetRequest.setExecutorHandler("checkAccountTask");
         JobGetResponse getResponse = xxlJobClient.execute(jobGetRequest);
-        log.info(JSONUtil.toJsonStr(getResponse));
+        log.info(JsonUtils.obj2json(getResponse));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class XxlJobClientTest {
         addRequest.setTitle("对账中心执行器2");
         addRequest.setAppname(xxlJobProperties.getAppname());
         String addResponse = xxlJobClient.execute(addRequest);
-        log.info("addResponse：{}", JSONUtil.toJsonStr(addResponse));
+        log.info("addResponse：{}", JsonUtils.obj2json(addResponse));
 
 //        String ip = (xxlJobProperties.getIp() != null && xxlJobProperties.getIp().trim().length() > 0) ? xxlJobProperties.getIp() : IpUtil.getIp();
 //        int port = xxlJobProperties.getPort() > 0 ? xxlJobProperties.getPort() : NetUtil.findAvailablePort(9999);
@@ -121,6 +121,6 @@ public class XxlJobClientTest {
 //        registryRequest.setRegistryKey(xxlJobProperties.getAppname());
 //        registryRequest.setRegistryValue(ip, port);
 //        String registryResponse = xxlJobClient.execute(registryRequest);
-//        log.info("registryResponse：{}", JsonUtik.toJsonStr(registryResponse));
+//        log.info("registryResponse：{}", JsonUtils.obj2json(registryResponse));
     }
 }

@@ -1,7 +1,6 @@
 package com.open.springboot.starter.xxljob.executor;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
 import com.open.springboot.starter.xxljob.XxlJobClient;
 import com.open.springboot.starter.xxljob.annotation.XxlJobCron;
 import com.open.springboot.starter.xxljob.properties.XxlJobProperties;
@@ -11,6 +10,7 @@ import com.open.springboot.starter.xxljob.request.JobAddRequest;
 import com.open.springboot.starter.xxljob.request.JobGetRequest;
 import com.open.springboot.starter.xxljob.response.ExecutorGetResponse;
 import com.open.springboot.starter.xxljob.response.JobGetResponse;
+import com.open.springboot.starter.xxljob.util.JsonUtils;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import com.xxl.job.core.glue.GlueFactory;
 import com.xxl.job.core.handler.annotation.XxlJob;
@@ -113,7 +113,7 @@ public class XxlJobSpringExecutorWhitRegister extends XxlJobSpringExecutor {
             addRequest.setTitle("自动注册服务器");
             addRequest.setAppname(xxlJobProperties.getAppname());
             String addResponse = xxlJobClient.execute(addRequest);
-            log.info("addResponse：{}", JSONUtil.toJsonStr(addResponse));
+            log.info("addResponse：{}", JsonUtils.obj2json(addResponse));
             // 再次获取
             getResponse = xxlJobClient.execute(getRequest);
         }

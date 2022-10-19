@@ -1,9 +1,7 @@
 package com.open.springboot.starter.xxljob.request;
 
-import cn.hutool.core.lang.TypeReference;
-import cn.hutool.core.map.MapUtil;
-import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
+import com.open.springboot.starter.xxljob.util.JsonUtils;
 
 import java.util.Map;
 
@@ -34,7 +32,8 @@ public abstract class BaseXxlJobRequest<T> {
      * @return
      */
     public Map<String, Object> toMap() {
-        return JSONUtil.toBean(JSONUtil.toJsonStr(this),Map.class);
+        //TypeReference<Map<String, Object>> typeReference = new TypeReference<Map<String, Object>>() {};
+        return JsonUtils.json2map(JsonUtils.obj2json(this));
     }
 
     /**
